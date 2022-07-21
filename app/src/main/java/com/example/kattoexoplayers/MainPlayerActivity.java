@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
@@ -54,6 +55,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainPlayerActivity extends AppCompatActivity {
@@ -98,7 +101,7 @@ public class MainPlayerActivity extends AppCompatActivity {
     //    private ArrayList<VideoModel> videoModels = new ArrayList<>();
 //String url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
     String url = "https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8";
-//    String url1 = "https://play.dyntube.io/videos/E9nTksPigkCzsfSBsrJP4w"; //Kempe Gowda
+    String url1 = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"; //Kempe Gowda
 
     private final String[] aspectmode = {
             "FIT",
@@ -282,6 +285,8 @@ public class MainPlayerActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
+
+                        roateImage1(forward10Sec);
                         int p = (int) player.getCurrentPosition();
 
                         Log.d("Player ", "forward10Sec bef->" + p);
@@ -306,6 +311,8 @@ public class MainPlayerActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
+                        roateImage(rewind10Sec);
+
                         int p = (int) player.getCurrentPosition();
                         Log.d("Player ", "rewind10Sec before ->" + p);
                         if (p > 10000) {
@@ -771,7 +778,7 @@ public class MainPlayerActivity extends AppCompatActivity {
 
     public void intializePlayer() {
         try {
-            Uri uri = Uri.parse(url);
+            Uri uri = Uri.parse(url1);
             MediaItem mediaItem = MediaItem.fromUri(uri);
             player.setMediaItem(mediaItem, currentitemseek);
             currentitemseek = 0;
@@ -1056,5 +1063,30 @@ public class MainPlayerActivity extends AppCompatActivity {
         } catch (Exception | Error e) {
             e.printStackTrace();
         }
+    }
+
+
+    private void roateImage(ImageView imageView) {
+
+        imageView.setRotationX(180);
+        Timer time=new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                imageView.setRotationX(0);
+            }
+        },100);
+    }
+
+    private void roateImage1(ImageView imageView) {
+
+        imageView.setRotationX(180);
+        Timer time=new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                imageView.setRotationX(0);
+            }
+        },100);
     }
 }

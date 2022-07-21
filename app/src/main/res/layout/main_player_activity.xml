@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="MainPlayerActivity"
+    tools:context=".MainPlayerActivity"
 
     >
 
@@ -16,10 +16,12 @@
         android:clickable="false"
         android:scaleX="1"
         android:scaleY="1"
+        android:visibility="visible"
         app:auto_show="false"
         app:resize_mode="fit"
         app:show_buffering="always"
         app:use_controller="false"
+
         />
 
     <RelativeLayout
@@ -56,7 +58,7 @@
             android:layout_marginLeft="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_toEndOf="@id/backarrow"
+            android:layout_centerHorizontal="true"
             android:maxLines="2"
             android:text="@string/app_name"
             android:textColor="@android:color/white"
@@ -117,9 +119,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:maxprogress="15"
-                app:progesscolor="#787474"
+                app:progesscolor="#FF0000"
                 app:progress="0"
-                app:viewbackgroundcolor="#8C8C8C" />
+                app:viewbackgroundcolor="@color/white" />
             <!--            app:progesscolor="#3db5ea"-->
 
             <ImageView
@@ -170,9 +172,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:maxprogress="15"
-                app:progesscolor="#787575"
+                app:progesscolor="#FF0000"
                 app:progress="0"
-                app:viewbackgroundcolor="#8C8C8C" />
+                app:viewbackgroundcolor="@color/white" />
             <!--            app:progesscolor="#3db5ea"-->
 
             <ImageView
@@ -197,7 +199,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -206,7 +207,7 @@
             android:id="@+id/speedview"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:layout_centerInParent="true"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="150dp"
             android:layout_marginRight="150dp"
             android:background="@drawable/roundview"
@@ -245,68 +246,88 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="16dp"
                 android:max="10"
-                android:maxHeight="5dp"
+                android:maxHeight="2dp"
                 android:min="0"
                 android:progressDrawable="@drawable/seekbar_progress_style"
                 android:theme="@style/SeekBarWithoutSteps"
                 android:thumb="@drawable/thumb_image"
-                app:tickColor="#FFB300"
+                app:tickColor="@color/white"
                 tools:ignore="UnusedAttribute" />
         </RelativeLayout>
 
-        <LinearLayout
+        <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible"
+                    >
+
+                    <ImageView
+                        android:id="@+id/exo_rew_1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_replay_10_24"
+                        tools:ignore="ContentDescription,KeyboardInaccessibleWidget"
+                        android:layout_weight="2"
+                        />
+
+                    <ImageView
+                        android:id="@+id/imageButton"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_play_arrow_24"
+                        tools:ignore="ContentDescription"
+                        android:layout_weight="2"
+                        />
+
+                    <ImageView
+                        android:id="@+id/exo_ffwd_1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_forward_10_24"
+                        tools:ignore="ContentDescription,KeyboardInaccessibleWidget"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+        -->
+
+
+        <RelativeLayout
             android:id="@+id/bottom"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:padding="5dp"
+            android:layout_centerInParent="true"
             android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/aspectbtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_fit_to_screen"
-                tools:ignore="ContentDescription" />
-
-            <Button
-                android:id="@+id/speedbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/_1x"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:background="#00000000"
-                />
 
             <ImageView
                 android:id="@+id/exo_rew_1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="115dp"
                 android:clickable="true"
-                android:padding="10dp"
-                android:src="@drawable/ic_baseline_replay_10_24"
+                android:src="@drawable/new10rev"
                 tools:ignore="ContentDescription,KeyboardInaccessibleWidget" />
 
             <ImageView
                 android:id="@+id/imageButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_baseline_play_arrow_24"
                 tools:ignore="ContentDescription" />
 
@@ -314,30 +335,62 @@
                 android:id="@+id/exo_ffwd_1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="115dp"
                 android:clickable="true"
-                android:padding="10dp"
-                android:src="@drawable/ic_baseline_forward_10_24"
+                android:src="@drawable/newfor1"
                 tools:ignore="ContentDescription,KeyboardInaccessibleWidget" />
 
 
-            <ImageView
-                android:id="@+id/exo_track_selection_view"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_baseline_video_settings_24"
-                tools:ignore="ContentDescription" />
+            <LinearLayout
+                android:id="@+id/l2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
 
-            <ImageView
-                android:id="@+id/lockbtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_baseline_lock_open_24"
-                tools:ignore="ContentDescription" />
+                <ImageView
+                    android:id="@+id/aspectbtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="2.2"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_fit_to_screen"
+                    tools:ignore="ContentDescription" />
+
+                <Button
+                    android:id="@+id/speedbtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:drawableLeft="@drawable/ic_baseline_speed_24"
+                    android:gravity="fill_vertical"
+                    android:text="@string/_1x"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/lockbtn"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_baseline_lock_open_24"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/exo_track_selection_view"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="2"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_baseline_video_settings_24"
+                    tools:ignore="ContentDescription" />
+
+
+            </LinearLayout>
 
 
             <!--            <RelativeLayout-->
@@ -361,13 +414,61 @@
             <!--            </RelativeLayout>-->
 
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/speeder"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/l2"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/currentprogress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/_00_00"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <SeekBar
+                    android:id="@+id/dragseek"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxHeight="2dp"
+                    android:progressDrawable="@drawable/seekbar_progress_style"
+                    android:thumb="@drawable/thumb_image"
+                    android:thumbOffset="0dp" />
+
+                <TextView
+                    android:id="@+id/endprogress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/_00_00"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/aspecttext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center"
@@ -376,7 +477,7 @@
             android:visibility="gone" />
 
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/speeder"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -384,7 +485,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="5dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/currentprogress"
@@ -403,7 +504,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:maxHeight="4dp"
+                android:maxHeight="2dp"
                 android:progressDrawable="@drawable/seekbar_progress_style"
                 android:thumb="@drawable/thumb_image"
                 android:thumbOffset="0dp" />
@@ -420,7 +521,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
     </RelativeLayout>
 
